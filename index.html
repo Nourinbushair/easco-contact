@@ -1,75 +1,366 @@
-<div class="content">
-  <div class="section-title">Contact Details</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SHAMEEL | EASCO Contact Card</title>
 
-  <div class="info-card">
-    <div class="info-item">
-      <div class="icon">☎</div>
-      <div class="info-text">
-        <div class="label">Office no.</div>
-        <div class="value">+966 53 904 1271</div>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f7f2ef 0%, #eee4de 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      color: #2d2d2d;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: #ffffff;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Top section */
+    .top {
+      background: linear-gradient(135deg, #8b2d23 0%, #b64a39 55%, #c85f4a 100%);
+      padding: 34px 24px 28px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .top::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 0;
+      height: 1px;
+      background: rgba(255,255,255,0.18);
+    }
+
+    /* Logo box */
+    .logo-box {
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 20px;
+      background: #ffffff;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.20);
+      border: 1px solid rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+      margin: auto;
+      object-fit: contain;
+    }
+
+    .name {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .company {
+      font-size: 15px;
+      opacity: 0.95;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* Main content */
+    .content {
+      padding: 26px 22px 28px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: #8b2d23;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .info-card {
+      background: #faf8f7;
+      border: 1px solid #eee5df;
+      border-radius: 18px;
+      padding: 18px 16px;
+      margin-bottom: 24px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #ece3dd;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-item:first-child {
+      padding-top: 0;
+    }
+
+    .icon {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: #f3e4df;
+      color: #8b2d23;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 2px;
+    }
+
+    .info-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .label {
+      font-size: 12px;
+      color: #8a7b74;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .value {
+      font-size: 14px;
+      color: #2f2f2f;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+
+    /* Buttons */
+    .btn-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      min-height: 50px;
+      padding: 14px 14px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #8b2d23 0%, #b64a39 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 22px rgba(139, 45, 35, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(0.98);
+    }
+
+    .btn-light {
+      background: #f8f5f3;
+      color: #3a312d;
+      border: 1px solid #ece2dc;
+    }
+
+    .btn-light:hover {
+      background: #f1ebe8;
+      transform: translateY(-1px);
+    }
+
+    .full {
+      grid-column: span 2;
+    }
+
+    .footer {
+      padding: 0 22px 24px;
+      text-align: center;
+      color: #8a7b74;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .footer strong {
+      color: #8b2d23;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+      }
+
+      .card {
+        border-radius: 22px;
+      }
+
+      .top {
+        padding: 28px 18px 24px;
+      }
+
+      .logo-box {
+        width: 130px;
+        height: 130px;
+        border-radius: 22px;
+      }
+
+      .name {
+        font-size: 26px;
+      }
+
+      .content {
+        padding: 22px 16px 24px;
+      }
+
+      .btn-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- Top -->
+    <div class="top">
+      <div class="logo-box">
+        <img src="logo.png" alt="EASCO Logo" />
+      </div>
+      <div class="name">SHAMEEL</div>
+      <div class="company">EASCO</div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="section-title">Contact Details</div>
+
+      <div class="info-card">
+        <div class="info-item">
+          <div class="icon">☎</div>
+          <div class="info-text">
+            <div class="label">Office No.</div>
+            <div class="value">+966 53 904 1271</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="icon">📱</div>
+          <div class="info-text">
+            <div class="label">Mobile</div>
+            <div class="value">+966 54 640 7725</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="icon">✉</div>
+          <div class="info-text">
+            <div class="label">Email</div>
+            <div class="value">info@ebdaa-alshahama.com</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="icon">🌐</div>
+          <div class="info-text">
+            <div class="label">Website</div>
+            <div class="value">www.ebdaksa.com</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="icon">📍</div>
+          <div class="info-text">
+            <div class="label">Address</div>
+            <div class="value">Al Safa Dist 8652, Al Jubail 35514, Saudi Arabia</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-grid">
+        <!-- Save contact -->
+        <a class="btn btn-primary full" href="shameel.vcf" download>
+          Save Contact
+        </a>
+
+        <!-- Call buttons -->
+        <a class="btn btn-light" href="tel:+966539041271">
+          Call Work
+        </a>
+
+        <a class="btn btn-light" href="tel:+966546407725">
+          Call Mobile
+        </a>
+
+        <!-- Email + Website -->
+        <a class="btn btn-light" href="mailto:info@ebdaa-alshahama.com">
+          Email
+        </a>
+
+        <a class="btn btn-light" href="https://www.ebdaksa.com" target="_blank">
+          Visit Website
+        </a>
+
+        <!-- Location -->
+        <a
+          class="btn btn-primary full"
+          href="https://maps.google.com/?q=Al+Safa+Dist+8652,+Al+Jubail+35514,+Saudi+Arabia"
+          target="_blank"
+        >
+          View Location
+        </a>
       </div>
     </div>
 
-    <div class="info-item">
-      <div class="icon">📱</div>
-      <div class="info-text">
-        <div class="label">Mobile</div>
-        <div class="value">+966 54 640 7725</div>
-      </div>
-    </div>
-
-    <div class="info-item">
-      <div class="icon">✉</div>
-      <div class="info-text">
-        <div class="label">Email</div>
-        <div class="value">info@ebdaa-alshahama.com</div>
-      </div>
-    </div>
-
-    <div class="info-item">
-      <div class="icon">🌐</div>
-      <div class="info-text">
-        <div class="label">Website</div>
-        <div class="value">www.ebdaksa.com</div>
-      </div>
-    </div>
-
-    <div class="info-item">
-      <div class="icon">📍</div>
-      <div class="info-text">
-        <div class="label">Address</div>
-        <div class="value">Al Safa Dist 8652, Al Jubail 35514, Saudi Arabia</div>
-      </div>
+    <div class="footer">
+      Scan the QR to <strong>save contact, call, visit website, or view location</strong>.
     </div>
   </div>
 
-  <div class="btn-grid">
-    <a class="btn btn-primary full" href="shameel.vcf" download>
-      Save Contact
-    </a>
-
-    <a class="btn btn-light" href="tel:+966539041271">
-      Call Work
-    </a>
-
-    <a class="btn btn-light" href="tel:+966546407725">
-      Call Mobile
-    </a>
-
-    <a class="btn btn-light" href="mailto:info@ebdaa-alshahama.com">
-      Email
-    </a>
-
-    <a class="btn btn-light" href="https://www.ebdaksa.com" target="_blank">
-      Visit Website
-    </a>
-
-    <a
-      class="btn btn-primary full"
-      href="https://maps.google.com/?q=Al+Safa+Dist+8652,+Al+Jubail+35514,+Saudi+Arabia"
-      target="_blank"
-    >
-      View Location
-    </a>
-  </div>
-</div>
+</body>
+</html>
